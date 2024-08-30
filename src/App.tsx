@@ -11,27 +11,14 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./theme";
 import axios from "axios";
 import WeatherDisplay from "./components/WeatherDisplay";
 import { WeatherData } from "./interfaces";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const SG = "Singapore";
-
-const theme = createTheme({
-  typography: {
-    h1: {
-      lineHeight: 1,
-      color: "purple"
-      // marginBottom: 0,
-      // fontWeight: 200,
-    },
-    // h5: {
-    //   fontWeight: 300,
-    // },
-  },
-});
 
 const App: React.FC = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);

@@ -24,20 +24,20 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({
   };
   const Desc = () => {
     return (
-      <Typography variant="body1">
+      <Typography variant="body2">
         {capitalizeWords(weather[0].description)}
       </Typography>
     );
   };
   const TempHL = () => {
     return (
-      <Typography variant="body1">
+      <Typography variant="body2">
         H: {formatTemperature(temp_max)} | L: {formatTemperature(temp_min)}
       </Typography>
     );
   };
   const Humidity = () => {
-    return <Typography variant="body1">{`Humidity: ${humidity}%`}</Typography>;
+    return <Typography variant="body2">{`Humidity: ${humidity}%`}</Typography>;
   };
   const City = () => {
     return (
@@ -45,7 +45,7 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({
     );
   };
   const Timestamp = () => {
-    return <Typography variant="body1">{currentDate} </Typography>;
+    return <Typography variant="body2">{currentDate} </Typography>;
   };
 
   return (
