@@ -21,9 +21,12 @@ const SG = "Singapore";
 
 const theme = createTheme({
   typography: {
-    // h1: {
-    //   fontWeight: 200,
-    // },
+    h1: {
+      lineHeight: 1,
+      color: "purple"
+      // marginBottom: 0,
+      // fontWeight: 200,
+    },
     // h5: {
     //   fontWeight: 300,
     // },
@@ -55,6 +58,8 @@ const App: React.FC = () => {
 
       setWeatherData({
         temp: weather.main.temp,
+        temp_min: weather.main.temp_min,
+        temp_max: weather.main.temp_max,
         humidity: weather.main.humidity,
         weather: weather.weather,
       });
@@ -104,10 +109,7 @@ const App: React.FC = () => {
         }}
       >
         {/* search component */}
-        <Box
-          display="flex"
-          alignItems="center"
-        >
+        <Box display="flex" alignItems="center">
           <Autocomplete
             freeSolo
             options={history}

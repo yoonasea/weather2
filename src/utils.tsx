@@ -4,10 +4,7 @@ export const capitalizeWords = (description: string) => {
 };
 
 // Helper function to format temperature
-export const formatTemperature = (temp: number, tempMax?: number): string => {
-  if (tempMax !== undefined) {
-    return `${Math.round(temp)}° / ${Math.round(tempMax)}°`;
-  } else {
-    return `${Math.round(temp)}°`;
-  }
+export const formatTemperature = (temp: number): string => {
+  return `${Math.round(temp)}°`;
 };
+

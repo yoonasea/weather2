@@ -2,23 +2,15 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { useMediaQuery, useTheme } from "@mui/material";
 import moment from "moment";
+import { WeatherDisplayProps } from "../interfaces";
 import { capitalizeWords, formatTemperature } from "../utils";
-
-interface WeatherDisplayProps {
-  weatherData: {
-    temp: number;
-    humidity: number;
-    weather: { description: string; icon: string }[];
-  };
-  currentCity: string;
-}
 
 const WeatherDisplay: React.FC<WeatherDisplayProps> = ({
   weatherData,
   currentCity,
 }) => {
   const theme = useTheme();
-  const { temp, humidity, weather } = weatherData;
+  const { temp, temp_min, temp_max, humidity, weather } = weatherData;
   const currentDate = moment().format("DD MMM YYYY | h.mmA");
   // Use media queries to determine the current breakpoint
   const isXs = useMediaQuery(theme.breakpoints.only("xs"));
@@ -38,7 +30,11 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({
     );
   };
   const TempHL = () => {
-    return <Typography variant="body1">H : L</Typography>;
+    return (
+      <Typography variant="body1">
+        H: {formatTemperature(temp_max)} | L: {formatTemperature(temp_min)}
+      </Typography>
+    );
   };
   const Humidity = () => {
     return <Typography variant="body1">{`Humidity: ${humidity}%`}</Typography>;
