@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { useMediaQuery, useTheme } from "@mui/material";
 import moment from "moment";
-import WeatherIcon from "./WeatherIcon";
 import { capitalizeWords, formatTemperature } from "../utils";
 
 interface WeatherDisplayProps {
@@ -55,12 +54,13 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({
 
   return (
     <Box
-      // textAlign="center"
+      mt={10}
       sx={{
-        backgroundColor: "rgba(255, 255, 255, 0.3)",
-        border: "1px solid rgba(255, 255, 255, 0.6)",
-        borderRadius: 1,
         padding: 2,
+        borderRadius: 2,
+        border: "1px solid rgba(255, 255, 255, 0.2)",
+        backgroundColor: "rgba(255, 255, 255, 0.3)",
+        backdropFilter: "blur(10px)",
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
       }}
     >
@@ -68,7 +68,13 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({
         <Typography variant="body1">Today's Weather</Typography>
         {isXs && (
           <div>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: 'flex-end' }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "flex-end",
+              }}
+            >
               <Temp /> <Desc />
             </div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -94,10 +100,24 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({
         )}
       </div>
 
-      <Box display="flex" justifyContent="center">
-        <WeatherIcon
-          icon={weather[0].icon}
-          description={weather[0].description}
+      <Box
+        display="flex"
+        justifyContent="center"
+        sx={{
+          position: "absolute",
+          top: -100,
+          right: 0,
+          width: 180,
+          height: "auto",
+        }}
+      >
+        <img
+          src={`http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}
+          alt={weather[0].description}
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
         />
       </Box>
     </Box>

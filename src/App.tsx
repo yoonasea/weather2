@@ -12,7 +12,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import axios from "axios"
+import axios from "axios";
 import WeatherDisplay from "./components/WeatherDisplay";
 import { WeatherData } from "./interfaces";
 
@@ -91,9 +91,23 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container maxWidth="lg" sx={{ marginTop: 2, marginBottom: 2 }}>
+      <Container
+        maxWidth="lg"
+        sx={{
+          paddingTop: 2,
+          paddingBottom: 2,
+          height: "100vh",
+          backgroundImage: "url(/bg-light.png)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         {/* search component */}
-        <Box mt={2} mb={2} display="flex" alignItems="center">
+        <Box
+          display="flex"
+          alignItems="center"
+        >
           <Autocomplete
             freeSolo
             options={history}
