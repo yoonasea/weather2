@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Container,
   CircularProgress,
@@ -8,6 +8,7 @@ import {
   Autocomplete,
   TextField,
   IconButton,
+  Button,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
@@ -24,13 +25,15 @@ const App: React.FC = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [searchQuery, setSearchQuery] = useState<string>("");
   const [currentCity, setCurrentCity] = useState<string>(SG);
   const [history, setHistory] = useState<string[]>(() => {
     // Initialize history from localStorage
     const storedHistory = localStorage.getItem("searchHistory");
     return storedHistory ? JSON.parse(storedHistory) : [];
   });
+
+  // Use a ref for searchQuery
+  const searchQueryRef = useRef<string>("");
 
   // Fetch weather data
   const fetchWeatherData = async (city: string) => {
@@ -69,9 +72,10 @@ const App: React.FC = () => {
   }, [currentCity]);
 
   const handleSearch = () => {
-    if (searchQuery) {
-      setCurrentCity(searchQuery);
-      fetchWeatherData(searchQuery);
+    const query = searchQueryRef.current;
+    if (query) {
+      setCurrentCity(query);
+      fetchWeatherData(query);
     }
   };
 
@@ -100,9 +104,8 @@ const App: React.FC = () => {
           <Autocomplete
             freeSolo
             options={history}
-            value={searchQuery}
             onChange={(event, newValue) => {
-              setSearchQuery(newValue || "");
+              searchQueryRef.current = newValue || "";
             }}
             renderInput={(params) => (
               <TextField
@@ -119,7 +122,7 @@ const App: React.FC = () => {
               />
             )}
             onInputChange={(event, newInputValue) => {
-              setSearchQuery(newInputValue);
+              searchQueryRef.current = newInputValue;
             }}
             renderOption={(props, option) => {
               const { key, ...restProps } = props;
@@ -153,9 +156,11 @@ const App: React.FC = () => {
             }}
             sx={{ flexGrow: 1, marginRight: 2 }}
           />
-          <IconButton
+          <Button
             onClick={handleSearch}
+            variant="contained"
             color="primary"
+            startIcon={<SearchIcon />}
             sx={{
               backgroundColor: "primary.main",
               color: "white",
@@ -163,10 +168,11 @@ const App: React.FC = () => {
                 backgroundColor: "primary.dark",
               },
               borderRadius: 1,
+              textTransform: "none",
             }}
           >
-            <SearchIcon />
-          </IconButton>
+            SEARCH
+          </Button>
         </Box>
         {/* error component */}
         {error && (

@@ -15,9 +15,6 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({
   // Use media queries to determine the current breakpoint
   const isXs = useMediaQuery(theme.breakpoints.only("xs"));
   const isSm = useMediaQuery(theme.breakpoints.only("sm"));
-  const isMd = useMediaQuery(theme.breakpoints.only("md"));
-  const isLg = useMediaQuery(theme.breakpoints.only("lg"));
-  const isXl = useMediaQuery(theme.breakpoints.only("xl"));
 
   const Temp = () => {
     return <Typography variant="h1">{formatTemperature(temp)}</Typography>;
