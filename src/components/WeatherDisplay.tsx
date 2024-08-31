@@ -1,10 +1,12 @@
-import React from "react";
-import { Box, Typography } from "@mui/material";
+import React,{ ReactNode } from "react";
+import { Box, Typography, Grid } from "@mui/material";
 import { useMediaQuery, useTheme } from "@mui/material";
 import moment from "moment";
 import { WeatherDisplayProps } from "../interfaces";
 import { capitalizeWords, formatTemperature } from "../utils";
-
+interface WeatherRowProps {
+  children: ReactNode;
+}
 const WeatherDisplay: React.FC<WeatherDisplayProps> = ({
   weatherData,
   currentCity,
@@ -45,6 +47,12 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({
     return <Typography variant="body2">{currentDate} </Typography>;
   };
 
+  const WeatherRow = ({ children }: WeatherRowProps) => (
+    <Grid container justifyContent="space-between" alignItems="flex-end">
+      {children}
+    </Grid>
+  );
+
   return (
     <Box
       mt={10}
@@ -57,41 +65,35 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
       }}
     >
-      <div>
-        <Typography variant="body1">Today's Weather</Typography>
-        {isXs && (
-          <div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "flex-end",
-              }}
-            >
-              <Temp /> <Desc />
-            </div>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <TempHL /> <Humidity />
-            </div>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <City /> <Timestamp />
-            </div>
-          </div>
-        )}
-        {isSmAndUp && (
-          <div>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <Temp />
-            </div>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <TempHL />
-            </div>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <City /> <Timestamp /> <Humidity /> <Desc />
-            </div>
-          </div>
-        )}
-      </div>
+    <div>
+      <Typography variant="body1">Today's Weather</Typography>
+      {isXs && (
+        <div>
+          <WeatherRow>
+            <Temp /> <Desc />
+          </WeatherRow>
+          <WeatherRow>
+            <TempHL /> <Humidity />
+          </WeatherRow>
+          <WeatherRow>
+            <City /> <Timestamp />
+          </WeatherRow>
+        </div>
+      )}
+      {isSmAndUp && (
+        <div>
+          <WeatherRow>
+            <Temp />
+          </WeatherRow>
+          <WeatherRow>
+            <TempHL />
+          </WeatherRow>
+          <WeatherRow>
+            <City /> <Timestamp /> <Humidity /> <Desc />
+          </WeatherRow>
+        </div>
+      )}
+    </div>
 
       <Box
         display="flex"

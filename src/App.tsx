@@ -13,6 +13,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
 import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from '@mui/material/CssBaseline';
 import theme from "./theme";
 import axios from "axios";
 import WeatherDisplay from "./components/WeatherDisplay";
@@ -88,6 +89,7 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={theme}>
+       <CssBaseline />
       <Container
         maxWidth="md"
         sx={{
