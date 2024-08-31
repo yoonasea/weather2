@@ -5,8 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #cfebfd;
   color: #121212;
+  background-image: url('../public/bg-light.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 code {

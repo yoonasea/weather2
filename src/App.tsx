@@ -20,7 +20,7 @@ import { WeatherData } from "./interfaces";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const SG = "Singapore";
-const dropdownBG = "#ccb1e3"
+const dropdownBG = "#ccb1e3";
 
 const App: React.FC = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
@@ -89,15 +89,11 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <Container
-        maxWidth="lg"
+        maxWidth="md"
         sx={{
           paddingTop: 2,
           paddingBottom: 2,
           height: "100vh",
-          backgroundImage: "url(/bg-light.png)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
         }}
       >
         {/* search component */}
