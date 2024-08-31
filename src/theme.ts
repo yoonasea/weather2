@@ -1,16 +1,22 @@
-// theme.ts
 import { createTheme } from "@mui/material/styles";
+
+// Define color constants
+const PRIMARY_MAIN = "#6f43c7";
+const SECONDARY_MAIN = "#ccb1e3";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#6f43c7",
+      main: PRIMARY_MAIN,
+    },
+    secondary: {
+      main: SECONDARY_MAIN,
     },
   },
   typography: {
     h1: {
       lineHeight: 1,
-      color: "#6f43c7",
+      color: PRIMARY_MAIN,
     },
     body1: {
       fontWeight: 600,
@@ -24,19 +30,19 @@ const theme = createTheme({
           height: '8px',
         },
         '::-webkit-scrollbar-thumb': {
-          backgroundColor: '#ccb1e3',
+          backgroundColor: SECONDARY_MAIN,
           borderRadius: '10px',
         },
         '::-webkit-scrollbar-thumb:hover': {
-          backgroundColor: '#6f43c7',
+          backgroundColor: PRIMARY_MAIN,
         },
         '::-webkit-scrollbar-track': {
-          backgroundColor: '#6f43c7',
+          backgroundColor: PRIMARY_MAIN,
           borderRadius: '10px',
         },
         '*': {
           scrollbarWidth: 'thin',
-          scrollbarColor: '#ccb1e3 #6f43c7',
+          scrollbarColor: `${SECONDARY_MAIN} ${PRIMARY_MAIN}`,
         },
         '::-webkit-scrollbar-button': {
           display: 'none',

@@ -13,7 +13,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
 import { ThemeProvider } from "@mui/material/styles";
-import CssBaseline from '@mui/material/CssBaseline';
+import CssBaseline from "@mui/material/CssBaseline";
 import theme from "./theme";
 import axios from "axios";
 import WeatherDisplay from "./components/WeatherDisplay";
@@ -21,7 +21,6 @@ import { WeatherData } from "./interfaces";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const SG = "Singapore";
-const dropdownBG = "#ccb1e3";
 
 const App: React.FC = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
@@ -89,7 +88,7 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={theme}>
-       <CssBaseline />
+      <CssBaseline />
       <Container
         maxWidth="md"
         sx={{
@@ -132,7 +131,7 @@ const App: React.FC = () => {
                   style={{
                     margin: "-10px 0px",
                     padding: 19,
-                    backgroundColor: dropdownBG,
+                    backgroundColor: theme.palette.secondary.main,
                   }}
                 >
                   <Box
@@ -141,7 +140,7 @@ const App: React.FC = () => {
                     alignItems="center"
                     width="100%"
                     sx={{
-                      backgroundColor: dropdownBG,
+                      backgroundColor: theme.palette.secondary.main,
                     }}
                   >
                     <Typography variant="body2" flexGrow={1}>

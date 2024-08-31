@@ -1,4 +1,4 @@
-import React,{ ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { Box, Typography, Grid } from "@mui/material";
 import { useMediaQuery, useTheme } from "@mui/material";
 import moment from "moment";
@@ -65,35 +65,35 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({
         boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
       }}
     >
-    <div>
-      <Typography variant="body1">Today's Weather</Typography>
-      {isXs && (
-        <div>
-          <WeatherRow>
-            <Temp /> <Desc />
-          </WeatherRow>
-          <WeatherRow>
-            <TempHL /> <Humidity />
-          </WeatherRow>
-          <WeatherRow>
-            <City /> <Timestamp />
-          </WeatherRow>
-        </div>
-      )}
-      {isSmAndUp && (
-        <div>
-          <WeatherRow>
-            <Temp />
-          </WeatherRow>
-          <WeatherRow>
-            <TempHL />
-          </WeatherRow>
-          <WeatherRow>
-            <City /> <Timestamp /> <Humidity /> <Desc />
-          </WeatherRow>
-        </div>
-      )}
-    </div>
+      <div>
+        <Typography variant="body1">Today's Weather</Typography>
+        {isXs && (
+          <div>
+            <WeatherRow>
+              <Temp /> <Desc />
+            </WeatherRow>
+            <WeatherRow>
+              <TempHL /> <Humidity />
+            </WeatherRow>
+            <WeatherRow>
+              <City /> <Timestamp />
+            </WeatherRow>
+          </div>
+        )}
+        {isSmAndUp && (
+          <div>
+            <WeatherRow>
+              <Temp />
+            </WeatherRow>
+            <WeatherRow>
+              <TempHL />
+            </WeatherRow>
+            <WeatherRow>
+              <City /> <Timestamp /> <Humidity /> <Desc />
+            </WeatherRow>
+          </div>
+        )}
+      </div>
 
       <Box
         display="flex"
