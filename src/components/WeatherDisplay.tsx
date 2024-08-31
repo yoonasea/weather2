@@ -14,7 +14,7 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({
   const currentDate = moment().format("DD MMM YYYY | h.mmA");
   // Use media queries to determine the current breakpoint
   const isXs = useMediaQuery(theme.breakpoints.only("xs"));
-  const isSm = useMediaQuery(theme.breakpoints.only("sm"));
+  const isSmAndUp = useMediaQuery(theme.breakpoints.up("sm"));
 
   const Temp = () => {
     return <Typography variant="h1">{formatTemperature(temp)}</Typography>;
@@ -78,7 +78,7 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({
             </div>
           </div>
         )}
-        {isSm && (
+        {isSmAndUp && (
           <div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <Temp />

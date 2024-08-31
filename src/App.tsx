@@ -20,6 +20,7 @@ import { WeatherData } from "./interfaces";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const SG = "Singapore";
+const dropdownBG = "#ccb1e3"
 
 const App: React.FC = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
@@ -128,12 +129,22 @@ const App: React.FC = () => {
               const { key, ...restProps } = props;
               const isDeletable = option !== SG;
               return (
-                <li key={key} {...restProps}>
+                <li
+                  {...restProps}
+                  style={{
+                    margin: "-10px 0px",
+                    padding: 19,
+                    backgroundColor: dropdownBG,
+                  }}
+                >
                   <Box
                     display="flex"
                     justifyContent="space-between"
                     alignItems="center"
                     width="100%"
+                    sx={{
+                      backgroundColor: dropdownBG,
+                    }}
                   >
                     <Typography variant="body2" flexGrow={1}>
                       {option}
